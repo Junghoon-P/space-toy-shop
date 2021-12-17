@@ -33,7 +33,8 @@ function App() {
     setX((prev) => prev + 1);
     setY((prev) => prev + 1);
     setLevel((prev) => prev + 1);
-    reset();
+    setTime(10);
+    setNewAnswer(~~(Math.random() * (x * y)));
   };
 
   const clickWrong = () => {
@@ -46,10 +47,6 @@ function App() {
     setY(3);
     setLevel(1);
     setStop(true);
-    reset();
-  };
-
-  const reset = () => {
     setTime(10);
     setNewAnswer(~~(Math.random() * 9));
   };

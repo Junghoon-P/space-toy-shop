@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import styled, { keyframes, createGlobalStyle } from "styled-components";
 import App from "./App";
+import styled, { keyframes, createGlobalStyle } from "styled-components";
 import "../fonts/font.css";
 
 const GlobalStyle = createGlobalStyle`

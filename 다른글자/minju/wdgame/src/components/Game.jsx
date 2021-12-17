@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "./Card";
-
 import styled from "styled-components";
 
 function Game({ x, y, newAnswer, clickAnswer, clickWrong }) {
@@ -26,6 +25,5 @@ const Grid = styled.article`
   width: 70vw;
   grid-template-columns: repeat(${(props) => props.x}, 1fr);
   grid-template-rows: repeat(${(props) => props.y}, 1fr);
-  gap: 1px;
 `;
 export default Game;
