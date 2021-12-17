@@ -5,24 +5,28 @@ import styled, { keyframes } from "styled-components";
 function App() {
   const [x, setX] = useState(3);
   const [y, setY] = useState(3);
-  const [newAnswer, setNewAnswer] = useState(~~(Math.random() * x * y));
+  const [newAnswer, setNewAnswer] = useState(~~(Math.random() * (x * y)));
   const [time, setTime] = useState(10);
 
   const [stop, setStop] = useState(true);
   const [level, setLevel] = useState(1);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
+  let startTimer;
+
+  const timer = () =>
+    (startTimer = setTimeout(() => {
       setTime((prev) => (prev - 0.01).toFixed(2));
-    }, 10);
+    }, 10));
+
+  useEffect(() => {
+    timer();
 
     if (time <= 0) {
       clickWrong();
-      clearTimeout(timer);
     }
 
-    return () => clearTimeout(timer);
-  });
+    return () => clearTimeout(startTimer);
+  }, [time]);
 
   const clickAnswer = () => {
     alert("정답입니다!");
@@ -33,6 +37,7 @@ function App() {
   };
 
   const clickWrong = () => {
+    clearTimeout(startTimer);
     setStop(false);
   };
 
@@ -70,7 +75,6 @@ function App() {
   );
 }
 export default App;
-
 const Main = styled.section`
   display: flex;
   flex-direction: column;
